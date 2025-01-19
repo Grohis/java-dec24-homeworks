@@ -1,27 +1,42 @@
 package ru.otus.java.basic.homeworks.homework3;
+
 import java.util.Scanner;
 
 public class AppHW3 {
     public static void main(String[] args) {
-
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Выбери команду 1 - 5");
-        int user = scanner.nextInt();
+        while (true) {
+            System.out.println("Выбери команду 1 - 5 или 0 для выхода");
+            int user = scanner.nextInt();
 
-        if (user >= 1 && user <= 5) {
-            if (user == 1) {
-                greetings();
-            } else if (user == 2) {
-                checkSing(5, 5, 5);
-            } else if (user == 3) {
-                selectColor();
-            } else if (user == 4) {
-                compareNumbers();
-            } else if (user == 5) {
-                addOrSubtractAndPrint(100, 10, false);
+            if (user == 0) {
+                System.out.println("Выход из программы");
+                break;
             }
-        } else {
-            System.out.println("Неверная команда");
+
+            if (user >= 1 && user <= 5) {
+                if (user == 1) {
+                    greetings();
+                } else if (user == 2) {
+                    System.out.println("Введи три числа:");
+                    int a = scanner.nextInt();
+                    int b = scanner.nextInt();
+                    int c = scanner.nextInt();
+                    checkSing(a, b, c);
+                } else if (user == 3) {
+                    selectColor();
+                } else if (user == 4) {
+                    compareNumbers();
+                } else if (user == 5) {
+                    System.out.println("Введи два числа и условие:");
+                    int initValue = scanner.nextInt();
+                    int delta = scanner.nextInt();
+                    boolean increment = scanner.nextBoolean(); // ожидает true или false
+                    addOrSubtractAndPrint(initValue, delta, increment);
+                }
+            } else {
+                System.out.println("Неверная команда");
+            }
         }
     }
 
