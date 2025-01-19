@@ -2,13 +2,30 @@ package ru.otus.java.basic.homeworks.homework3;
 
 import ru.otus.java.basic.homeworks.Main;
 
+import java.util.Scanner;
+
 public class AppHW3 {
     public static void main(String[] args) {
-//        greetings();
-//        checkSing(-10, 5, 5);
-//        selectColor();
-//        compareNumbers();
-        addOrSubtractAndPrint(100,10,false);
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Выбери команду 1 - 5");
+        int user = scanner.nextInt();
+
+        if (user >= 1 && user <= 5) {
+            if (user == 1) {
+                greetings();
+            } else if (user == 2) {
+                checkSing(5, 5, 5);
+            } else if (user == 3) {
+                selectColor();
+            } else if (user == 4) {
+                compareNumbers();
+            } else if (user == 5) {
+                addOrSubtractAndPrint(100, 10, false);
+            }
+        } else {
+            System.out.println("Неверная команда");
+        }
     }
 
     public static void greetings() {
@@ -30,7 +47,7 @@ public class AppHW3 {
         int data = 1 + (int) (Math.random() * 30);
         if (data <= 10) {
             System.out.println("Красный");
-        } else if (data > 10 && data <= 20) {
+        } else if (data <= 20) {
             System.out.println("Желтый");
         } else {
             System.out.println("Зеленый");
@@ -48,11 +65,10 @@ public class AppHW3 {
     }
 
     public static void addOrSubtractAndPrint(int initValue, int delta, boolean increment) {
-        if (increment == true){
+        if (increment) {
             System.out.println(initValue + delta);
         } else {
             System.out.println(initValue - delta);
         }
     }
-
 }
