@@ -1,7 +1,4 @@
 package ru.otus.java.basic.homeworks.homework3;
-
-import ru.otus.java.basic.homeworks.Main;
-
 import java.util.Scanner;
 
 public class AppHW3 {
