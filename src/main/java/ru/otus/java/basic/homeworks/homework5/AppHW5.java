@@ -26,8 +26,16 @@ public class AppHW5 {
 //        int num = 5;
 //        incrementArrayElementsBy(num, arr);
 
-        int[] arr = {100, 120, 150,200,100,50};
-        analyzeArrayHalvesSum(arr);
+//        int[] arr = {100, 120, 150,200,100,50};
+//        analyzeArrayHalvesSum(arr);
+
+
+        int countArray = 3;
+        int[] arr1 = {1, 2, 3};
+        int[] arr2 = {2, 2};
+        int[] arr3 = {1, 1, 1, 1, 1};
+        sumArray(countArray, arr1, arr2, arr3);
+
     }
 
     public static void printWordXNum(int num, String word) {
@@ -54,34 +62,60 @@ public class AppHW5 {
         System.out.println("теперь массив выглядит так =" + Arrays.toString(arr));
     }
 
-    public static void incrementArrayElementsBy(int num, int[] arr){
+    public static void incrementArrayElementsBy(int num, int[] arr) {
         System.out.println("массив выглядит так = " + Arrays.toString(arr));
-        for (int i = 0; i < arr.length; i++){
+        for (int i = 0; i < arr.length; i++) {
             arr[i] += num;
         }
         System.out.println("теперь массив выглядит так =" + Arrays.toString(arr));
     }
 
 
-    public static void analyzeArrayHalvesSum(int[] arr){
+    public static void analyzeArrayHalvesSum(int[] arr) {
         System.out.println("массив выглядит так = " + Arrays.toString(arr));
         int sumLeft = 0;
         int sumRayt = 0;
-        for (int i =0; i < arr.length / 2; i++){
+        for (int i = 0; i < arr.length / 2; i++) {
             sumLeft += arr[i];
         }
-        for (int i = arr.length / 2; i < arr.length; i++){
+        for (int i = arr.length / 2; i < arr.length; i++) {
             sumRayt += arr[i];
         }
         System.out.println("Сумма левой половины = " + sumLeft);
         System.out.println("Сумма правой половины = " + sumRayt);
-        if (sumLeft > sumRayt){
+        if (sumLeft > sumRayt) {
             System.out.println("Больше левая половина массива");
-        }else if (sumRayt > sumLeft){
+        } else if (sumRayt > sumLeft) {
             System.out.println("Больше правая половина массива");
-        }else {
+        } else {
             System.out.println("Они равны или что то пошло не так");
         }
     }
+
+    public static void sumArray(int countArray, int[] arr1, int[] arr2, int[] arr3) {
+        int lenArr = 0;
+        if (arr1.length > arr2.length && arr1.length > arr3.length) {
+            lenArr = arr1.length;
+        } else if (arr2.length > arr3.length && arr2.length > arr3.length) {
+            lenArr = arr2.length;
+        } else {
+            lenArr = arr3.length;
+        }
+//        System.out.println("длинна lenArr = " + lenArr);
+        int[] resultArr = new int[lenArr];
+        for (int i = 0; i < arr1.length; i++) {
+        resultArr[i] += arr1[i];
+        }
+        for (int i = 0; i < arr2.length;i++){
+            resultArr[i] += arr2[i];
+        }
+        for (int i = 0; i<arr3.length; i++){
+            resultArr[i] += arr3[i];
+        }
+        System.out.println(Arrays.toString(resultArr));
+
+
+    }
+
 
 }//main
