@@ -31,10 +31,13 @@ public class AppHW5 {
 
 
         int countArray = 3;
-        int[] arr1 = {1, 2, 3};
+        int[] arr1 = {4, 8, 10, 432, 0};
         int[] arr2 = {2, 2};
         int[] arr3 = {1, 1, 1, 1, 1};
-        sumArray(countArray, arr1, arr2, arr3);
+//        sumArray(countArray, arr1, arr2, arr3);
+
+        getPrintDigestingArray(arr1);
+
 
     }
 
@@ -93,6 +96,7 @@ public class AppHW5 {
     }
 
     public static void sumArray(int countArray, int[] arr1, int[] arr2, int[] arr3) {
+        // todo как передать n массивов. Как
         int lenArr = 0;
         if (arr1.length > arr2.length && arr1.length > arr3.length) {
             lenArr = arr1.length;
@@ -101,21 +105,41 @@ public class AppHW5 {
         } else {
             lenArr = arr3.length;
         }
-//        System.out.println("длинна lenArr = " + lenArr);
+        System.out.println("длинна lenArr = " + lenArr);
         int[] resultArr = new int[lenArr];
         for (int i = 0; i < arr1.length; i++) {
-        resultArr[i] += arr1[i];
+            resultArr[i] += arr1[i];
         }
-        for (int i = 0; i < arr2.length;i++){
+        for (int i = 0; i < arr2.length; i++) {
             resultArr[i] += arr2[i];
         }
-        for (int i = 0; i<arr3.length; i++){
+        for (int i = 0; i < arr3.length; i++) {
             resultArr[i] += arr3[i];
         }
         System.out.println(Arrays.toString(resultArr));
+    }
 
+
+    /**
+     * Реализуйте метод, “переворачивающий” входящий массив Пример:
+     *  { 1 2 3 4 } => { 4 3 2 1 }
+     * @param arr
+     */
+    public static void getPrintDigestingArray(int[] arr) {
+        int lenArr = arr.length;
+        int[] digestingArray = new int[lenArr];
+        System.out.println("получен массив arr = " + Arrays.toString(arr));
+        for (int i = lenArr -1; i >= 0; i--) {
+            //digestingArray[i] = arr[i];;
+//            System.out.println("i = " + arr[i]);
+            System.out.println(arr[i]);
+
+
+        }
+        // System.out.println("digestingArray = " + Arrays.toString(digestingArray));
 
     }
+
 
 
 }//main
