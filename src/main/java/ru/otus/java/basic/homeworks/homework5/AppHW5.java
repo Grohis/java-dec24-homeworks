@@ -62,7 +62,7 @@ public class AppHW5 {
                 sumArray(arr1, arr2, arr3);
             } else if (numProgram == 7) {
                 int[] dataInteger = genRandomDataInteger(rnd); // как управлять вероятностью баланса (return true)?
-               // int[] dataInteger = { 7, 2, 2, 2 };
+                // int[] dataInteger = { 7, 2, 2, 2 };
                 balansPoint(dataInteger);
 
             } else if (numProgram == 8) {
@@ -72,6 +72,17 @@ public class AppHW5 {
             } else if (numProgram == 0) {
                 System.out.println("Выход из программы...");
                 break;
+            } else if (numProgram == 9) {
+//                int[] arr = {1, 2, 3, 4, 5};
+                int[] arr = {5, 4, 3, 2, 1};
+                System.out.println("1 - По возрастанию \n2 - По убыванию");
+                int operation = scanner.nextInt();
+                scanner.nextLine();
+                if (operation == 1) {
+                    isAscending(arr);
+                } else {
+                    isDescending(arr);
+                }
             } else {
                 System.out.println("Ошибка! Выберите существующую программу.");
             }
@@ -81,6 +92,31 @@ public class AppHW5 {
 
 
     }// main
+
+
+    private static void isDescending(int[] arr) {
+        System.out.println("Массив = " + Arrays.toString(arr));
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i] < arr[i + 1]) {
+                System.out.println("Ошибка последовательности");
+                return;
+            }
+        }
+        System.out.println("По убыванию");
+    }
+
+    // метод по возрастанию
+    private static void isAscending(int[] arr) {
+        System.out.println("Массив = " + Arrays.toString(arr));
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i] > arr[i + 1]) {
+                System.out.println("Ошибка последовательности");
+                return;
+            }
+        }
+        System.out.println("По возрастанию");
+    }
+
 
     private static void balansPoint(int[] dataInteger) {
 //        System.out.println("dataInteger = " + Arrays.toString(dataInteger));
@@ -135,6 +171,7 @@ public class AppHW5 {
         System.out.println("6 - Суммирует элементы трех массивов");
         System.out.println("7 - Определение 'точки' в массиве");
         System.out.println("8 - Реверс массива");
+        System.out.println("9 - по возростанию или убыванию?");
         System.out.println("0 - Выход");
         System.out.print("Выберите программу >> ");
     }
