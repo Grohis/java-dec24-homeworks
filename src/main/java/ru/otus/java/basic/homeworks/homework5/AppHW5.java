@@ -60,6 +60,11 @@ public class AppHW5 {
                 System.out.println(Arrays.toString(arr2));
                 System.out.println(Arrays.toString(arr3));
                 sumArray(arr1, arr2, arr3);
+            } else if (numProgram == 7) {
+                int[] dataInteger = genRandomDataInteger(rnd); // как управлять вероятностью баланса (return true)?
+               // int[] dataInteger = { 7, 2, 2, 2 };
+                balansPoint(dataInteger);
+
             } else if (numProgram == 8) {
                 int[] randomArray = genRandomDataInteger(rnd);
                 printDigestingArray(randomArray);
@@ -77,12 +82,37 @@ public class AppHW5 {
 
     }// main
 
+    private static void balansPoint(int[] dataInteger) {
+//        System.out.println("dataInteger = " + Arrays.toString(dataInteger));
+        System.out.println("dataInteger = " + Arrays.toString(dataInteger)); // soutp
+        int totalSum = 0;
+
+        for (int i = 0; i < dataInteger.length; i++) {
+            totalSum += dataInteger[i];
+//            System.out.println("totalSum" + totalSum);
+            // как поставить лог, а не print ???
+        }
+        System.out.println("totalSum" + totalSum);
+        int leftSum = 0;
+        int rightSum = totalSum;
+        for (int i = 0; i < dataInteger.length; i++) {
+            if (leftSum == rightSum) {
+                System.out.println("Точка баланса найдена на индексе: " + i);
+                return; // завершаем метод при первом находе.
+            }
+            rightSum -= dataInteger[i];
+            leftSum += dataInteger[i];
+        }
+        System.out.println("Точка баланса не найдена");
+        //return false;
+    }
+
     private static boolean goProgramm(Scanner scanner) {
         System.out.println("Хочешь выбрать другую программу?");
         System.out.println("1 - да \n0 - выход");
         int go = scanner.nextInt();
         scanner.nextLine();
-        if (go == 0){
+        if (go == 0) {
             System.out.println("Выход из программы");
             return true;
         }
@@ -90,7 +120,7 @@ public class AppHW5 {
     }
 
     private static void printWordIteration(int iteration, String word) {
-        for (int i = 0; i < iteration; i++){
+        for (int i = 0; i < iteration; i++) {
             System.out.println(word);
         }
     }
@@ -103,6 +133,7 @@ public class AppHW5 {
         System.out.println("4 - Увеличить каждый элемент массива на число");
         System.out.println("5 - Правая или левая часть больше");
         System.out.println("6 - Суммирует элементы трех массивов");
+        System.out.println("7 - Определение 'точки' в массиве");
         System.out.println("8 - Реверс массива");
         System.out.println("0 - Выход");
         System.out.print("Выберите программу >> ");
