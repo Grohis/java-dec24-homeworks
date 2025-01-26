@@ -1,70 +1,147 @@
 package ru.otus.java.basic.homeworks.homework5;
 
 import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 
 public class AppHW5 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
-//        System.out.println("Введи слово:");
-//        String word = scanner.nextLine();
-//        System.out.println("Введи число посторений:");
-//        int num = scanner.nextInt();
-//        printWordXNum(num, word);
-
-//        int[] arr = {10, 20, 4, 3, -9, -300, 400, 43, 40, 200};
-//        sumElementsGreaterThanFive(arr);
+        Random rnd = new Random();
 
 
-//        int[] arr = new int[10];
-//        int num = 89;
-//        fillArrayWithNumber(89,arr);
+        while (true) {
+            printMenu();
+
+            int numProgram = scanner.nextInt();
+            scanner.nextLine(); // Очищаем \n после nextInt()
+
+            if (numProgram == 1) {
+                System.out.println("Введи слово: ");
+                String word = scanner.nextLine();
+
+                System.out.println("Введи число повторения: ");
+                int iteration = scanner.nextInt();
+                scanner.nextLine();
+                printWordIteration(iteration, word);
+            } else if (numProgram == 2) {
+                int[] dataInteger = genRandomDataInteger(rnd);
+                sumElementsGreaterThanFive(dataInteger);
+            } else if (numProgram == 3) {
+                System.out.println("Введи длинну массива : ");
+                int lenDataInteger = scanner.nextInt();
+                scanner.nextLine();
+
+                System.out.println("Введи число для заполнения массиива :");
+                int valueInteger = scanner.nextInt();
+                scanner.nextLine();
+
+                System.out.println("Создан массив длинной" + lenDataInteger + "элементов, число для заполнения " + valueInteger);
+                int[] DataInteger = new int[lenDataInteger];
+
+                setArrayElementsToValue(valueInteger, DataInteger);
+            } else if (numProgram == 4) {
+                int[] DataInteger = genRandomDataInteger(rnd);
+                System.out.println("Рандом массив выглядит так: " + Arrays.toString(DataInteger));
+                System.out.println("Введи число:");
+                int valueDigit = scanner.nextInt();
+                incrementArrayElementsBy(valueDigit, DataInteger);
+            } else if (numProgram == 5) {
+                int lenDataInteger = rnd.nextInt(25) + 4;
+                int[] dataInteger = genRandomDataInteger(rnd);
+                System.out.println("Массив рандомной длинны и с рандомными числами готов");
+                System.out.println(Arrays.toString(dataInteger));
+                analyzeArrayHalvesSum(dataInteger);
+            } else if (numProgram == 6) {
+                int[] arr1 = genRandomDataInteger(rnd);
+                int[] arr2 = genRandomDataInteger(rnd);
+                int[] arr3 = genRandomDataInteger(rnd);
+                System.out.println(Arrays.toString(arr1));
+                System.out.println(Arrays.toString(arr2));
+                System.out.println(Arrays.toString(arr3));
+                sumArray(arr1, arr2, arr3);
+            } else if (numProgram == 8) {
+                int[] randomArray = genRandomDataInteger(rnd);
+                printDigestingArray(randomArray);
+
+            } else if (numProgram == 0) {
+                System.out.println("Выход из программы...");
+                break;
+            } else {
+                System.out.println("Ошибка! Выберите существующую программу.");
+            }
+
+            if (goProgramm(scanner)) break;
+        }// while
 
 
-//        int[] arr = {-10,-20,-30};
-//        int num = 5;
-//        incrementArrayElementsBy(num, arr);
+    }// main
 
-//        int[] arr = {100, 120, 150,200,100,50};
-//        analyzeArrayHalvesSum(arr);
-
-
-        int countArray = 3;
-        int[] arr1 = {4, 8, 10, 432, 0};
-        int[] arr2 = {2, 2};
-        int[] arr3 = {1, 1, 1, 1, 1};
-//        sumArray(countArray, arr1, arr2, arr3);
-
-        getPrintDigestingArray(arr1);
-
-
+    private static boolean goProgramm(Scanner scanner) {
+        System.out.println("Хочешь выбрать другую программу?");
+        System.out.println("1 - да \n0 - выход");
+        int go = scanner.nextInt();
+        scanner.nextLine();
+        if (go == 0){
+            System.out.println("Выход из программы");
+            return true;
+        }
+        return false;
     }
 
-    public static void printWordXNum(int num, String word) {
-        for (int i = 0; i < num; i++) {
+    private static void printWordIteration(int iteration, String word) {
+        for (int i = 0; i < iteration; i++){
             System.out.println(word);
         }
     }
 
+    private static void printMenu() {
+        System.out.println("\nПрограмма умеет:");
+        System.out.println("1 - Напечать слово N раз");
+        System.out.println("2 - Посчитать сумму чисел, больше значения");
+        System.out.println("3 - Установить элементы массива в значение");
+        System.out.println("4 - Увеличить каждый элемент массива на число");
+        System.out.println("5 - Правая или левая часть больше");
+        System.out.println("6 - Суммирует элементы трех массивов");
+        System.out.println("8 - Реверс массива");
+        System.out.println("0 - Выход");
+        System.out.print("Выберите программу >> ");
+    }
+
+    private static int[] genRandomDataInteger(Random random) {
+        Random rnd = new Random();
+        int lenDataInteger = rnd.nextInt(25) + 4;
+        int[] dataInteger = new int[lenDataInteger];
+        for (int i = 0; i < lenDataInteger; i++) {
+            dataInteger[i] = rnd.nextInt(100);
+        }
+        return dataInteger;
+    }
+
     public static void sumElementsGreaterThanFive(int[] arr) {
+        System.out.println("Исходный массива = " + Arrays.toString(arr));
         int sum = 0;
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] > 5) {
                 sum += arr[i];
             }
         }
+        // System.out.println("arr = " + Arrays.toString(arr));
         System.out.println("Сумма чисел, который больше 5 = " + sum);
     }
 
-    public static void fillArrayWithNumber(int num, int[] arr) {
-        System.out.println("массив выглядит так = " + Arrays.toString(arr));
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = num;
+    //Установить элементы массива в значение
+    public static void setArrayElementsToValue(int valueInteger, int[] DataInteger) {
+
+        // System.out.println("массив выглядит так = " + Arrays.toString(DataInteger));
+        for (int i = 0; i < DataInteger.length; i++) {
+            DataInteger[i] = valueInteger;
         }
-        System.out.println("теперь массив выглядит так =" + Arrays.toString(arr));
+        System.out.println("Результат = " + Arrays.toString(DataInteger));
     }
 
+
+    // увеличить на число
     public static void incrementArrayElementsBy(int num, int[] arr) {
         System.out.println("массив выглядит так = " + Arrays.toString(arr));
         for (int i = 0; i < arr.length; i++) {
@@ -75,7 +152,6 @@ public class AppHW5 {
 
 
     public static void analyzeArrayHalvesSum(int[] arr) {
-        System.out.println("массив выглядит так = " + Arrays.toString(arr));
         int sumLeft = 0;
         int sumRayt = 0;
         for (int i = 0; i < arr.length / 2; i++) {
@@ -84,19 +160,23 @@ public class AppHW5 {
         for (int i = arr.length / 2; i < arr.length; i++) {
             sumRayt += arr[i];
         }
-        System.out.println("Сумма левой половины = " + sumLeft);
-        System.out.println("Сумма правой половины = " + sumRayt);
         if (sumLeft > sumRayt) {
             System.out.println("Больше левая половина массива");
         } else if (sumRayt > sumLeft) {
             System.out.println("Больше правая половина массива");
         } else {
-            System.out.println("Они равны или что то пошло не так");
+            System.out.println("Они равны");
         }
+        System.out.println("Сумма левой половины = " + sumLeft);
+        System.out.println("Сумма правой половины = " + sumRayt);
     }
 
-    public static void sumArray(int countArray, int[] arr1, int[] arr2, int[] arr3) {
-        // todo как передать n массивов. Как
+    public static void sumArray(int[] arr1, int[] arr2, int[] arr3) {
+        System.out.println("первый радомный массив: " + Arrays.toString(arr1));
+        System.out.println("второй радомный массив: " + Arrays.toString(arr2));
+        System.out.println("третий радомный массив: " + Arrays.toString(arr3));
+
+        // todo Как создать массив c N элементов, с вложенными массивами M длинны и рандомными числами
         int lenArr = 0;
         if (arr1.length > arr2.length && arr1.length > arr3.length) {
             lenArr = arr1.length;
@@ -105,7 +185,7 @@ public class AppHW5 {
         } else {
             lenArr = arr3.length;
         }
-        System.out.println("длинна lenArr = " + lenArr);
+        //System.out.println("длинна lenArr = " + lenArr);
         int[] resultArr = new int[lenArr];
         for (int i = 0; i < arr1.length; i++) {
             resultArr[i] += arr1[i];
@@ -116,30 +196,19 @@ public class AppHW5 {
         for (int i = 0; i < arr3.length; i++) {
             resultArr[i] += arr3[i];
         }
+        System.out.println("Результат");
         System.out.println(Arrays.toString(resultArr));
     }
 
-
-    /**
-     * Реализуйте метод, “переворачивающий” входящий массив Пример:
-     *  { 1 2 3 4 } => { 4 3 2 1 }
-     * @param arr
-     */
-    public static void getPrintDigestingArray(int[] arr) {
+    public static void printDigestingArray(int[] arr) {
         int lenArr = arr.length;
         int[] digestingArray = new int[lenArr];
         System.out.println("получен массив arr = " + Arrays.toString(arr));
-        for (int i = lenArr -1; i >= 0; i--) {
-            //digestingArray[i] = arr[i];;
-//            System.out.println("i = " + arr[i]);
-            System.out.println(arr[i]);
-
-
+        for (int i = 0; i < lenArr; i++) {
+            digestingArray[i] = arr[lenArr - 1 - i];
         }
-        // System.out.println("digestingArray = " + Arrays.toString(digestingArray));
-
+        System.out.println("Массив в обратном порядке : " + Arrays.toString(digestingArray));
     }
 
 
-
-}//main
+}//class
