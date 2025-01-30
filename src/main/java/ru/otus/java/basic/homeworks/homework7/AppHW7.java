@@ -5,17 +5,64 @@ import java.util.Random;
 
 public class AppHW7 {
     public static void main(String[] args) {
-
-
-        getSumPositivElements();
-
+       // homeTask1();
+       // homeTask2();
+        homeTaskZeroDiagonalElements();
 
     }// main
 
-    private static void getSumPositivElements() {
-        int sumDigit = 0;
+    private static void homeTaskZeroDiagonalElements() {
+        int[][] zeroDiagonalElements = getDataDigit(3,3);
+        for (int i = 0; i < zeroDiagonalElements.length; i++) {
+            for (int j = 0; j < zeroDiagonalElements[i].length; j++) {
+                if(zeroDiagonalElements[i] == zeroDiagonalElements[j]){
+                    zeroDiagonalElements[i][j] = 0;
+                }
+            }
+        }
+        printArray(zeroDiagonalElements);
+    }
 
-        int[][] dataDigit = getDataDigit(3,3);
+    private static void homeTask2() {
+        int size = 2;
+        printSizeArray(size);
+    }
+
+    private static void printSizeArray(int size) {
+        char [][] sizeArray = new char[size][size];
+        for (int i = 0; i < sizeArray.length; i++) {
+            for (int j = 0; j < sizeArray[i].length; j++) {
+                sizeArray[i][j] = '*';
+            }
+        }
+        for (int i = 0; i < sizeArray.length; i++) {
+            for (int j = 0; j < sizeArray[i].length; j++) {
+                System.out.print(sizeArray[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    private static void homeTask1() {
+        int[][] integerData = getDataDigit(3,3);
+        printArray(integerData);
+        int sumPositiveDigit = sumOfPositiveElements(integerData);
+        System.out.println("Сумма положительных чисел двехмерного массива = " + sumPositiveDigit);
+    }
+
+    private static int sumOfPositiveElements(int[][] dataDigit) {
+        int sumDigit = 0;
+        for (int i = 0; i < dataDigit.length; i++) {
+            for (int j = 0; j < dataDigit[i].length; j++) {
+                if (dataDigit[i][j] > 0){
+                    sumDigit += dataDigit[i][j];
+                }
+            }
+        }
+        return sumDigit;
+    }
+
+    private static void printArray(int[][] dataDigit) {
         System.out.print("Двухмерный массива имеет следующие значения");
         System.out.println();
         for (int i = 0; i < dataDigit.length; i++) {
@@ -24,14 +71,6 @@ public class AppHW7 {
             }
             System.out.println();
         }
-        for (int i = 0; i < dataDigit.length; i++) {
-            for (int j = 0; j < dataDigit[i].length; j++) {
-                if (dataDigit[i][j] > 0){
-                    sumDigit += dataDigit[i][j];
-                }
-            }
-        }
-        System.out.print("Сумма положительных чисел двухмерного массива = " + sumDigit);
     }
 
     private static int[][] getDataDigit(int x, int y) {
