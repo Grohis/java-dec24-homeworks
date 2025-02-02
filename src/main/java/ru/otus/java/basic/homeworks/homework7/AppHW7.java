@@ -5,43 +5,42 @@ import java.util.Random;
 
 public class AppHW7 {
     public static void main(String[] args) {
-        // homeTask1();
-        //homeTaskPrintArrayElements();
-        // homeTaskZeroDiagonalElements();
-        //homeTaskGetMaxInteger();
-        // Реализуйте метод, который считает сумму элементов второй строки двумерного массива,
-        // если второй строки не существует, то в качестве результата необходимо вернуть -1
+        homeTask1();
+        homeTaskPrintArrayElements();
+        homeTaskZeroDiagonalElements();
+        int[][] dataInteger = getDataDigit(7, 7);
+        findMax(dataInteger);
         int result = homeTaskGetResultTwoLine();
         System.out.println("Результат = " + result);
 
 
     }// main
 
+
     private static int homeTaskGetResultTwoLine() {
-        // todo  выяснить почему не работает
+
         int[][] dataInteger = getDataDigit(3, 3);
         printArray(dataInteger);
-        int result = -1;
+
         if (dataInteger.length < 2) {
             System.out.print("Вторая строк отсутствует");
-            return result;
+            return -1;
         }
-        for (int i = 0; i < dataInteger.length; i++) {
-            for (int j = 0; j < dataInteger[i].length; j++) {
-                if (i == 1) {
-                    result += dataInteger[i][i];
-                }
-            }
-            return result + 1;
+        int result = 0;
+        for (int j = 0; j < dataInteger[1].length; j++) {
+            result += dataInteger[1][j];
         }
+        return result;
+
     }
 
 
-    private static void homeTaskGetMaxInteger() {
-        int[][] dataInteger = getDataDigit(7, 7);
-        int maxInteger = MaxInteger(dataInteger);
+    private static void findMax (int[][] array) {
+
+        int maxInteger = MaxInteger(array);
         System.out.print("Максимальный элемент массива = " + maxInteger);
     }
+
 
     private static int MaxInteger(int[][] dataInteger) {
         int maxInteger = 0;
@@ -70,6 +69,7 @@ public class AppHW7 {
         printArray(zeroDiagonalElements);
     }
 
+
     private static void homeTaskPrintArrayElements() {
         int size = 10;
         printSizeArray(size);
@@ -90,12 +90,14 @@ public class AppHW7 {
         }
     }
 
+
     private static void homeTask1() {
         int[][] integerData = getDataDigit(3, 3);
         printArray(integerData);
         int sumPositiveDigit = sumOfPositiveElements(integerData);
         System.out.println("Сумма положительных чисел двехмерного массива = " + sumPositiveDigit);
     }
+
 
     private static int sumOfPositiveElements(int[][] dataDigit) {
         int sumDigit = 0;
@@ -109,6 +111,7 @@ public class AppHW7 {
         return sumDigit;
     }
 
+
     private static void printArray(int[][] dataDigit) {
         System.out.print("Двухмерный массива имеет следующие значения");
         System.out.println();
@@ -119,6 +122,7 @@ public class AppHW7 {
             System.out.println();
         }
     }
+
 
     private static int[][] getDataDigit(int x, int y) {
         int[][] dataDigit = new int[y][x];
