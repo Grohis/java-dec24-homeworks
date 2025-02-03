@@ -6,21 +6,28 @@ import java.util.Random;
 public class AppHW7 {
     public static void main(String[] args) {
         homeTask1();
+
         homeTaskPrintArrayElements();
+
         homeTaskZeroDiagonalElements();
+
         int[][] dataInteger = getDataDigit(7, 7);
-        findMax(dataInteger);
-        int result = homeTaskGetResultTwoLine();
-        System.out.println("Результат = " + result);
+
+        int result = findMax(dataInteger);
+        System.out.println("Максимальное значение = " + result);
+
+        int[][] dataInteger1 = getDataDigit(3, 3);
+        printArray(dataInteger1);
+
+        int result1 = homeTaskGetResultTwoLine(dataInteger1);
+        System.out.println("Результат = " + result1);
 
 
     }// main
 
 
-    private static int homeTaskGetResultTwoLine() {
+    private static int homeTaskGetResultTwoLine(int[][] dataInteger) {
 
-        int[][] dataInteger = getDataDigit(3, 3);
-        printArray(dataInteger);
 
         if (dataInteger.length < 2) {
             System.out.print("Вторая строк отсутствует");
@@ -35,15 +42,8 @@ public class AppHW7 {
     }
 
 
-    private static void findMax (int[][] array) {
-
-        int maxInteger = MaxInteger(array);
-        System.out.print("Максимальный элемент массива = " + maxInteger);
-    }
-
-
-    private static int MaxInteger(int[][] dataInteger) {
-        int maxInteger = 0;
+    private static int findMax(int[][] dataInteger) {
+        int maxInteger = dataInteger[0][0];
         for (int i = 0; i < dataInteger.length; i++) {
             for (int j = 0; j < dataInteger[i].length; j++) {
                 if (dataInteger[i][j] > maxInteger) {
@@ -76,17 +76,12 @@ public class AppHW7 {
     }
 
     private static void printSizeArray(int size) {
-        char[][] sizeArray = new char[size][size];
-        for (int i = 0; i < sizeArray.length; i++) {
-            for (int j = 0; j < sizeArray[i].length; j++) {
-                sizeArray[i][j] = '*';
-            }
-        }
-        for (int i = 0; i < sizeArray.length; i++) {
-            for (int j = 0; j < sizeArray[i].length; j++) {
-                System.out.print(sizeArray[i][j] + "\t");
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                System.out.print('*');
             }
             System.out.println();
+
         }
     }
 
