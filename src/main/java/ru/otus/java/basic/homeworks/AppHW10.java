@@ -32,6 +32,35 @@ public class AppHW10 {
 
         }
 
+        // Box
+        // Создал коробку
+        Box box = new Box(10, 20, "красный");
+        // Инфо
+        box.printInfo();
+        // Положил предмет
+        box.putItem("ручка");
+        // Открыл коробку
+        box.open();
+        // Положил предмет
+        box.putItem("игрушка");
+        // Второй предмет?
+        box.putItem("книга");
+        //Инфо
+        box.printInfo();
+        // Закрыл
+        box.close();
+        // Достаю предмет
+        box.removeItem();
+        // Открыл коробку и достал предмет
+        box.open();
+        box.removeItem();
+        // Инфо
+        box.printInfo();
+        // Перекрасил коробку
+        box.paint("синий");
+        // Инфо
+        box.printInfo();
+
     }
 
     public static String getRandomString (String[]array, Random random){
