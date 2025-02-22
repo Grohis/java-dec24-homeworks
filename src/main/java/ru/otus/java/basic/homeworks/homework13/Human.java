@@ -1,6 +1,6 @@
 package ru.otus.java.basic.homeworks.homework13;
 
-public class Human {
+class Human {
     private String name;
     private Transport currentTransport;
 
@@ -11,19 +11,17 @@ public class Human {
 
     public void sit(Transport transport) {
         this.currentTransport = transport;
-        System.out.println(name + " сул на " + transport.getName());
+        System.out.println(name + " сел на " + transport.getName());
     }
 
     public void getOff() {
         if (currentTransport != null) {
-            System.out.println(name + " сзел с " + currentTransport.getName());
+            System.out.println(name + " слез с " + currentTransport.getName());
             currentTransport = null;
-        } else {
-            System.out.println(name + " и так не использует транспорт");
         }
     }
 
-    public boolean move(String terrain, int distance) {
+    public boolean move(Terrain terrain, int distance) {
         if (currentTransport == null) {
             System.out.println(name + " идет пешком " + distance + " км по " + terrain);
             return true;

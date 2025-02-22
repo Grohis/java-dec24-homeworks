@@ -6,18 +6,7 @@ class AllTerrainVehicle extends Transport {
     }
 
     @Override
-    public boolean canMove(String terrain) {
-        return true;
-    }
-
-    @Override
-    public boolean move(int distance, String terrain) {
-        if (fuelOrEnergy < distance) {
-            System.out.println(name + " не имеет достаточно топлива");
-            return false;
-        }
-        fuelOrEnergy -= distance;
-        System.out.println(name + " проехал " + distance + " км по " + terrain);
+    public boolean canMove(Terrain terrain) {
         return true;
     }
 }

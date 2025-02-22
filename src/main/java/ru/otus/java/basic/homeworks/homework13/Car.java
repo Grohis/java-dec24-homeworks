@@ -6,18 +6,7 @@ class Car extends Transport {
     }
 
     @Override
-    public boolean canMove(String terrain) {
-        return !terrain.equals("густой лес") && !terrain.equals("болото");
-    }
-
-    @Override
-    public boolean move(int distanse, String terrain) {
-        if (!canMove(terrain) || fuelOrEnergy < distanse) {
-            System.out.println(name + " не может двигаться дальше по " + terrain);
-            return false;
-        }
-        fuelOrEnergy -= distanse;
-        System.out.println(name + " проехала " + distanse + " км по " + terrain);
-        return true;
+    public boolean canMove(Terrain terrain) {
+        return terrain == Terrain.PLAIN;
     }
 }

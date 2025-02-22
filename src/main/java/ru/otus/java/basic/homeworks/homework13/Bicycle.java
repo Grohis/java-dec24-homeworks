@@ -6,17 +6,7 @@ class Bicycle extends Transport {
     }
 
     @Override
-    public boolean canMove(String terrain) {
-        return !terrain.equals("болото");
-    }
-
-    @Override
-    public boolean move(int distance, String terrain) {
-        if (!canMove(terrain)) {
-            System.out.println(name + " не может двигаться по " + terrain);
-            return false;
-        }
-        System.out.println(name + " проехал " + distance + " км по " + terrain);
-        return true;
+    public boolean canMove(Terrain terrain) {
+        return terrain != Terrain.SWAMP;
     }
 }
