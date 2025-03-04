@@ -46,4 +46,37 @@ public class Utils {
         }
         return names;
     }
+
+    // Метод для фильтрации сотрудников по минимальному возрасту
+    public static List<Employee> filterByAge(List<Employee> employees, int minAge) {
+        List<Employee> filtered = new ArrayList<>();
+        for (Employee emp : employees) {
+            if (emp.getAge() >= minAge) {
+                filtered.add(emp);
+            }
+        }
+        return filtered;
+    }
+
+    // Метод для проверки, превышает ли средний возраст сотрудников указанное значение
+    public static boolean isAverageAgeAbove(List<Employee> employees, double minAverageAge) {
+        if (employees.isEmpty()) return false;
+        double sum = 0;
+        for (Employee emp : employees) {
+            sum += emp.getAge();
+        }
+        return (sum / employees.size()) > minAverageAge;
+    }
+
+    // Метод для нахождения самого молодого сотрудника
+    public static Employee getYoungestEmployee(List<Employee> employees) {
+        if (employees.isEmpty()) return null;
+        Employee youngest = employees.get(0);
+        for (Employee emp : employees) {
+            if (emp.getAge() < youngest.getAge()) {
+                youngest = emp;
+            }
+        }
+        return youngest;
+    }
 }
