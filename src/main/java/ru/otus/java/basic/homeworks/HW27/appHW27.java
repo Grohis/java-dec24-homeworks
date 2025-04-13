@@ -17,7 +17,6 @@ public class appHW27 {
 
         System.out.println("Сравнение коробок: " + appleBox1.compare(orangeBox));
 
-        // Пересыпаем яблоки
         System.out.println("До пересыпания: appleBox2 = " + appleBox2.getCount());
         appleBox1.transferFruitsTo(appleBox2);
         System.out.println("После пересыпания: appleBox2 = " + appleBox2.getCount());
