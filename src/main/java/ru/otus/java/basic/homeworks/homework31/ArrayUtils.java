@@ -2,9 +2,18 @@ package ru.otus.java.basic.homeworks.homework31;
 
 import java.util.Arrays;
 
+/**
+ * Утилитный класс с методами для работы с массивами.
+ */
 public class ArrayUtils {
 
-    // 1. Возвращает элементы после последней единицы
+    /**
+     * Возвращает элементы массива, расположенные после последней единицы (1).
+     *
+     * @param arr исходный массив
+     * @return массив элементов, следующих за последней единицей
+     * @throws RuntimeException если в массиве нет ни одной единицы
+     */
     public static int[] elementsAfterLastOne(int[] arr) {
         int lastIndex = -1;
         for (int i = 0; i < arr.length; i++) {
@@ -18,7 +27,13 @@ public class ArrayUtils {
         return Arrays.copyOfRange(arr, lastIndex + 1, arr.length);
     }
 
-    // 2. Проверка, что массив содержит только 1 и 2, и есть хотя бы одна 1 и одна 2
+    /**
+     * Проверяет, что массив состоит только из единиц (1) и двоек (2),
+     * и содержит хотя бы одну единицу и одну двойку.
+     *
+     * @param arr массив для проверки
+     * @return true, если условие выполнено, иначе false
+     */
     public static boolean checkArray(int[] arr) {
         boolean hasOne = false;
         boolean hasTwo = false;
